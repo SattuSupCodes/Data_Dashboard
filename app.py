@@ -24,7 +24,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dbc.Container([
     dbc.Row([
-        dbc.Col([html.H1])
+        dbc.Col(html.H1("HealthCare Dashboard"), width=15, className="text-centre")
     ])
 ])
 
