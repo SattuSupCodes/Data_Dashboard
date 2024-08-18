@@ -5,7 +5,7 @@ import plotly.express as px
 import pandas as pd
 
 
-# loading data
+# loading/cleaning data
 
 def loading_data():
     df = pd.read_csv('assets/healthcare_dataset.csv')
@@ -15,12 +15,14 @@ def loading_data():
     return df
 
 df = loading_data()
+num_records = len(df)
+avg_billing = df["Billing Amount"].mean()
 
 # creating web app
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-# app layout and design
+# app layout and design karing
 
 app.layout = dbc.Container([
     dbc.Row([
