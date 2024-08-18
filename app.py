@@ -1,6 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
-from dash import dcc, Input, Output
+from dash import dcc, Input, Output, html
 import plotly.express as px 
 import pandas as pd
 
@@ -19,4 +19,50 @@ df = loading_data()
 # creating web app
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+# app layout and design
+
+app.layout = dbc.Container([
+    dbc.Row([
+        dbc.Col([html.H1])
+    ])
+])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    app.run_server(debug = True)
     
