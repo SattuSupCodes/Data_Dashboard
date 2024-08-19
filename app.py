@@ -47,6 +47,16 @@ app.layout = dbc.Container([
                 ])
             ])
         ])
+    ]),
+    dbc.Col([
+        dbc.Card([
+            dbc.CardBody([
+                 html.H4("Medical Condition Distribution", className="card-title"),
+                 dcc.Graph(id="Condition-distribution")
+                
+            ])
+            
+        ])
     ])
     
     
