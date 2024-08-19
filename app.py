@@ -38,7 +38,11 @@ app.layout = dbc.Container([
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
-                    html.H4("Patient Demographics", className="card-title")
+                    html.H4("Patient Demographics", className="card-title"),
+                    dcc.Dropdown(
+                        id="gender-filter"
+                    ),
+                    dcc.Graph(id="age-distribution") #bhai kuch mast si cheez code horhi
                     
                 ])
             ])
