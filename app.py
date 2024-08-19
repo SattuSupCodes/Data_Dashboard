@@ -30,8 +30,22 @@ app.layout = dbc.Container([
     ]),
     # hospital statistics ko ab hum dekhenge
     dbc.Row([dbc.Col(html.Div(f"Total Patient Records: {num_records}", className="text-centre my-3 top-text"),width=7),
-        dbc.Col(html.Div(f"Average Billing Amount"))     
-             ])
+        dbc.Col(html.Div(f"Average Billing Amount: {avg_billing}", className="text-centre my-3 top-text"), width=7)     
+             ], className="mb-5"),
+    
+    
+    dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4("Patient Demographics", className="card-title")
+                    
+                ])
+            ])
+        ])
+    ])
+    
+    
     
 ])
 
