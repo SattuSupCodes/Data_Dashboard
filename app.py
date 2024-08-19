@@ -46,7 +46,7 @@ app.layout = dbc.Container([
                     
                 ])
             ])
-        ])
+        ], width=7)
     ]),
     dbc.Col([
         dbc.Card([
@@ -57,11 +57,41 @@ app.layout = dbc.Container([
             ])
             
         ])
+    ], width=7),
+    # insurance provider ka data
+    dbc.Row([
+     dbc.Col([
+        dbc.Card([
+            dbc.CardBody([
+                html.H4("Insurance Provider Comparison", className="card-title"),
+                 dcc.Graph(id="Insurance-comparison")
+                
+            ])
+        ])
+    ], width=12),
+    
+    dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4("Billing Amount Distribution", className="card-title"),
+                    dcc.Slider(id="billing-slider"),
+                    dcc.Graph(id="billing-distribution")
+                    
+                ])
+            ])
+        ])
     ])
+])
+    
     
     
     
 ])
+
+
+ 
+
 
 
 
