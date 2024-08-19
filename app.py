@@ -80,8 +80,25 @@ app.layout = dbc.Container([
                     
                 ])
             ])
-        ])
-    ])
+        ], width=12)
+    ]), 
+    # Trends in Admission
+     dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4("Trends in Admission", className="card-title"),
+                    
+                    dcc.RadioItems(
+                        id='chart-type'
+                    ), 
+                    dcc.Dropdown(id="condtition-filter"),
+                    dcc.Graph(id="admission-trends")
+                    
+                ])
+            ])
+        ], width=12)
+    ]), 
 ])
     
     
