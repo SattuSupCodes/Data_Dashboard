@@ -29,7 +29,10 @@ app.layout = dbc.Container([
         dbc.Col(html.H1("HealthCare Dashboard"), width=15, className="text-centre my-5")
     ]),
     # hospital statistics ko ab hum dekhenge
-    dbc.Row([dbc.Col(html.Div(f"Total Patient Records:"))])
+    dbc.Row([dbc.Col(html.Div(f"Total Patient Records: {num_records}", className="text-centre my-3 top-text"),width=7),
+        dbc.Col(html.Div(f"Average Billing Amount"))     
+             ])
+    
 ])
 
 
