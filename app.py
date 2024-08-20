@@ -72,7 +72,7 @@ app.layout = dbc.Container([
             ])
         ])
     ], width=12),
-    
+    # billing distribution
     dbc.Row([
         dbc.Col([
             dbc.Card([
@@ -80,7 +80,10 @@ app.layout = dbc.Container([
                     html.H4("Billing Amount Distribution", className="card-title"),
                     dcc.Slider(id="billing-slider",
                                min=df["Billing Amount"].min(),
-                               max=df["Billing Amount"].max()
+                               max=df["Billing Amount"].max(),
+                               value=df["Billing Amount"].median(),
+                               marks={int(value): f"${int(value):,}" for value in df["Billing Amount"].quantile([0,0.25,0.5,0.75,1]).values},
+                               step=100
                                ),
                     dcc.Graph(id="billing-distribution")
                     
