@@ -51,6 +51,7 @@ app.layout = dbc.Container([
             ])
         ], width=7)
     ]),
+    # Medical Condition Distribution
     dbc.Col([
         dbc.Card([
             dbc.CardBody([
@@ -82,7 +83,7 @@ app.layout = dbc.Container([
                                min=df["Billing Amount"].min(),
                                max=df["Billing Amount"].max(),
                                value=df["Billing Amount"].median(),
-                               marks={int(value): f"${int(value):,}" for value in df["Billing Amount"].quantile([0,0.25,0.5,0.75,1]).values},
+                               marks={int(value): f"₹{int(value):,}" for value in df["Billing Amount"].quantile([0,0.25,0.5,0.75,1]).values},
                                step=100
                                ),
                     dcc.Graph(id="billing-distribution")
@@ -99,9 +100,17 @@ app.layout = dbc.Container([
                     html.H4("Trends in Admission", className="card-title"),
                     
                     dcc.RadioItems(
-                        id='chart-type'
+                        id='chart-type',
+                        options=[{"label":"Line Chart", 'value':'Line'},{"label":"Bar Chart", 'value':'Bar'}],
+                        value='line',
+                        inline=True,
+                        className='mb-4'
                     ), 
-                    dcc.Dropdown(id="condtition-filter"),
+                    dcc.Dropdown(id="condtition-filter",
+                                 options=[{'label':condition, 'value': condition} for 
+                                          condition in df["Medical Condition"].unique()],
+                                 value=None,
+                                 placeholder="Conditions"),
                     dcc.Graph(id="admission-trends")
                     
                 ])
