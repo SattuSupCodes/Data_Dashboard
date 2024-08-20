@@ -30,17 +30,20 @@ app.layout = dbc.Container([
     ]),
     # hospital statistics ko ab hum dekhenge
     dbc.Row([dbc.Col(html.Div(f"Total Patient Records: {num_records}", className="text-centre my-3 top-text"),width=7),
-        dbc.Col(html.Div(f"Average Billing Amount: {avg_billing}", className="text-centre my-3 top-text"), width=7)     
+        dbc.Col(html.Div(f"Average Billing Amount: {avg_billing:,.2f}", className="text-centre my-3 top-text"), width=7)     
              ], className="mb-5"),
     
-    
+    # aurat ya mard 
     dbc.Row([
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
                     html.H4("Patient Demographics", className="card-title"),
                     dcc.Dropdown(
-                        id="gender-filter"
+                        id="gender-filter",
+                        options=[{"label":gender , "value": gender}for gender in df["Gender"].unique()] ,
+                        value=None,
+                        placeholder="Select a Gender"
                     ),
                     dcc.Graph(id="age-distribution") #bhai kuch mast si cheez code horhi
                     
@@ -104,7 +107,9 @@ app.layout = dbc.Container([
     
     
     
-])
+], fluid=True)
+
+
 
 
  
