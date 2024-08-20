@@ -78,7 +78,10 @@ app.layout = dbc.Container([
             dbc.Card([
                 dbc.CardBody([
                     html.H4("Billing Amount Distribution", className="card-title"),
-                    dcc.Slider(id="billing-slider"),
+                    dcc.Slider(id="billing-slider",
+                               min=df["Billing Amount"].min(),
+                               max=df["Billing Amount"].max()
+                               ),
                     dcc.Graph(id="billing-distribution")
                     
                 ])
