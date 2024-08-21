@@ -124,13 +124,43 @@ app.layout = dbc.Container([
     
 ], fluid=True)
 
+# finally we start on callbacksss
+
+@app.callback(
+    Output('age-distribution', 'figure'),
+    Input('gender-filter', 'value')
+    
+)
+def update_distribution(selected_gender):
+    if selected_gender:
+        filtered_df = df[df["Gender"]== selected_gender] 
+    else:
+        filtered_df = df
+        
+    if filtered_df.empty:
+        return {}
+    
+    fig = px.histogram(
+        filtered_df,
+        x="Age",
+        nbins=10,
+        color="Gender",
+        title="Age distribution by gender",
+        color_discrete_sequence=["#0c10f8", "#f81a0c" ]
+        
+    )
+    return fig
 
 
 
- 
-
-
-
+@app.callback(
+    Output('Condition-distribution', 'figure'),
+    Input('gender-filter', 'value')
+)
+def update_med_cond(selected_gender):
+    filtered_df = df[df["Gender"]==selected_gender] if selected_gender else df
+    fig = px.pie(filtered_df, names="Medical Condition", title="Medical Condition Distribution")
+    return fig
 
 
 
