@@ -164,10 +164,19 @@ def update_med_cond(selected_gender):
 
 
 
+# bhaari cheez hai haalat behaal hai but WE FIGHT
 
-
-
-
+@app.callback(
+    Output('Insurance-comparison', 'figure'),
+    Input('gender-filter', 'value')
+)
+def update_insurance(selected_gender):
+    filtered_df = df[df["Gender"]==selected_gender] if selected_gender else df
+    fig = px.bar(filtered_df,  x= "Insurance Provider",  y="Billing Amount", color="Medical Condition", 
+                 barmode="group",
+                 title="Insurance Provider Price Comparison",
+                 color_discrete_sequence=px.colors.qualitative.Set2)
+    return fig
 
 
 
