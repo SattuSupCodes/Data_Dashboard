@@ -180,7 +180,17 @@ def update_insurance(selected_gender):
 
 
 
-
+@app.callback(
+    Output('billing-distribution', 'figure'),
+    [Input('gender-filter', 'value'), 
+     Input('billing-slider', 'value')]
+)
+def update_billing(selected_gender, slider_value):
+    # code ko bhi callbacks aate hai. Mujhe nhi aate but koi nhi. 
+    filtered_df = df[df["Gender"]==selected_gender] if selected_gender else df
+    filtered_df = filtered_df[filtered_df["Billing Amount"] <= slider_value]
+    fig = px.histogram(filtered_df, x="Billing Amount", nbins=10, title="Billing Amount Distribution")
+    return fig
 
 
 
